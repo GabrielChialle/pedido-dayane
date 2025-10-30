@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dayane 💙</title>
+  <title>Dayel💙</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -183,32 +183,20 @@
 
   <!-- HERO -->
   <section class="hero" aria-label="Foto principal do casal">
-    <div class="audio-control" id="audioCard" title="Controlar música">
-      <button id="playBtn" aria-label="Tocar">▶</button>
-      <button id="pauseBtn" aria-label="Pausar" style="display:none">❚❚</button>
-      <span class="label">O Fogo Arderá</span>
-    </div>
 
     <div class="hero-inner">
-      <h1>O fogo arderá</h1>
-      <p class="hero-sub">– Onde há você, há paz, alegria e casa. –</p>
+      <h1>O que Deus uniu, ninguém separe</h1>
+      <p class="hero-sub">– Mateus 19:6 –</p>
     </div>
   </section>
-
-  <!-- Áudio (substitua musica.mp3 pelo seu arquivo) -->
-  <audio id="bgAudio" loop preload="auto">
-    <source src="musica.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio.
-  </audio>
 
   <!-- TEXTO PRINCIPAL -->
   <section class="texto" aria-label="Mensagem para Dayane">
     <div class="main-text">
       <p class="main-text">
-        Amor, desde o primeiro dia que nos cruzamos senti algo tranquilo e certo.  
-        Você entrou na minha vida com sorriso, fé e um jeito que aquece tudo ao redor.  
-        Hoje quero dizer obrigado por cada presença, cada abraço e cada momento simples que virou lembrança.  
-        Que nossa história siga crescendo com carinho, respeito e muitos sonhos juntos. 💙
+        No dia 28/08 nos encontramos a primeira vez, na igreja, em um momento que ambos estavamos afastados e mal nos conheciamos. Mesmo assim foi uma noite mágica, um momento pessoal e que mesmo sem saber o que cada um enfrentava, estavamos ali, louvando e entregando nossos corações. 
+        Desde então nossos melhores momentos foi colocando Deus na frente e sinto que ainda tem tanto por vir...
+        você chegou com um sorriso lindo, repleto de sonhos e fé, espero poder te amar cada dia mais e fazer vocẽ se apaixonar por mim em todos eles, assim como você faz comigo. Até que o Senhor venha.💙
       </p>
     </div>
   </section>
@@ -222,35 +210,8 @@
 
   <!-- RODAPÉ -->
   <footer>
-    Feito com amor 💙 — Gabriel
+    Feito com amor — Seu cacheadinho
   </footer>
 
-  <!-- JavaScript para controle de audio simples -->
-  <script>
-    const audio = document.getElementById('bgAudio');
-    const playBtn = document.getElementById('playBtn');
-    const pauseBtn = document.getElementById('pauseBtn');
-
-    // tentativa de autoplay: alguns navegadores bloqueiam autoplay com som - tocamos apenas quando usuário clica
-    function showPlayingState(playing){
-      if(playing){ playBtn.style.display='none'; pauseBtn.style.display='inline' }
-      else { playBtn.style.display='inline'; pauseBtn.style.display='none' }
-    }
-
-    playBtn.addEventListener('click', () => {
-      audio.play().then(()=> showPlayingState(true)).catch(()=> showPlayingState(false));
-    });
-
-    pauseBtn.addEventListener('click', () => {
-      audio.pause();
-      showPlayingState(false);
-    });
-
-    // se o navegador permitir autoplay sem interação, tenta iniciar em volume baixo
-    try {
-      audio.volume = 0.14; // volume bem suave
-      audio.play().then(()=> showPlayingState(true)).catch(()=> {});
-    } catch(e){ /* ignore */ }
-  </script>
 </body>
 </html>
