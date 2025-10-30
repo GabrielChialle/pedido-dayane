@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dayane 💙</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --baby-blue: #e9f6ff;
+      --accent: #3b6ea0;
+      --soft: #fff;
+      --muted: #5a5a5a;
+      --glass: rgba(255,255,255,0.7);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:"Poppins",sans-serif;background:var(--baby-blue);color:#222}
+
+    /* HERO: foto de fundo com overlay */
+    .hero{
+      position:relative;
+      min-height:60vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      background-image: url('dg.png'); /* imagem de fundo: substitua se quiser */
+      background-size:cover;
+      background-position:center;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      /* filtro suave azulado escuro para contraste do texto */
+      background: linear-gradient(180deg, rgba(9,32,48,0.25), rgba(9,32,48,0.45));
+      backdrop-filter: blur(0.5px);
+      z-index:0;
+    }
+
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      padding:40px 24px;
+      max-width:1100px;
+      width:100%;
+      animation:fadeInUp .9s ease both;
+    }
+
+    h1{
+      margin:0;
+      font-family:'Playfair Display', serif;
+      font-weight:600;
+      color:#fff;
+      font-size: clamp(28px, 5vw, 48px);
+      letter-spacing:0.4px;
+      text-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+
+    .hero-sub{
+      margin-top:12px;
+      color:rgba(255,255,255,0.9);
+      font-size: clamp(14px,2.2vw,18px);
+      opacity:0.95;
+    }
+
+    /* audio control small card at top-right on hero */
+    .audio-control{
+      position:absolute;
+      top:18px;
+      right:18px;
+      background: rgba(255,255,255,0.85);
+      padding:8px 10px;
+      border-radius:999px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+      z-index:3;
+    }
+
+    .audio-control button{
+      border:0;
+      background:transparent;
+      font-size:16px;
+      cursor:pointer;
+      padding:6px;
+    }
+
+    .audio-control .label{font-size:13px;color:#1f567f;font-weight:600}
+
+    /* Texto principal em bloco azul bebê */
+    .texto {
+      margin: 0 auto;
+      padding: 48px 20px;
+      max-width: 880px;
+      background: var(--baby-blue);
+      color: #1f2f3a;
+      text-align: center;
+      line-height:1.7;
+      font-size:18px;
+      animation:fadeIn .9s ease both;
+    }
+
+    .texto .main-text {
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.5));
+      padding: 26px;
+      border-radius:12px;
+      box-shadow: 0 8px 24px rgba(9,32,48,0.06);
+      display:inline-block;
+      max-width:760px;
+    }
+
+    /* Galeria */
+    .galeria {
+      display:flex;
+      gap:20px;
+      justify-content:center;
+      align-items:center;
+      padding: 40px 18px 60px;
+      flex-wrap:wrap;
+      animation:fadeIn .9s .12s both;
+    }
+
+    .galeria .foto {
+      width: 320px;
+      height: 320px;
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow: 0 12px 30px rgba(9,32,48,0.12);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      background: #ddd;
+    }
+
+    .galeria .foto img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform-origin:center;
+      transition: transform 0.6s ease;
+    }
+
+    .galeria .foto:hover{ transform: translateY(-8px) scale(1.02); box-shadow:0 18px 42px rgba(9,32,48,0.18) }
+    .galeria .foto:hover img{ transform: scale(1.06) }
+
+    /* Footer */
+    footer{
+      text-align:center;
+      padding:28px 16px 60px;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    /* Responsividade */
+    @media (max-width:900px){
+      .galeria .foto{ width: 44vw; height:44vw }
+    }
+
+    @media (max-width:520px){
+      .audio-control{ top:12px; right:12px; padding:6px 8px }
+      h1{ font-size:26px }
+      .texto{ padding:28px 14px }
+    }
+
+    /* small animations */
+    @keyframes fadeInUp {
+      from{ opacity:0; transform: translateY(14px) }
+      to{ opacity:1; transform: translateY(0) }
+    }
+    @keyframes fadeIn {
+      from{ opacity:0 } to{ opacity:1 }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Foto principal do casal">
+    <div class="audio-control" id="audioCard" title="Controlar música">
+      <button id="playBtn" aria-label="Tocar">▶</button>
+      <button id="pauseBtn" aria-label="Pausar" style="display:none">❚❚</button>
+      <span class="label">O Fogo Arderá</span>
+    </div>
+
+    <div class="hero-inner">
+      <h1>O fogo arderá</h1>
+      <p class="hero-sub">– Onde há você, há paz, alegria e casa. –</p>
+    </div>
+  </section>
+
+  <!-- Áudio (substitua musica.mp3 pelo seu arquivo) -->
+  <audio id="bgAudio" loop preload="auto">
+    <source src="musica.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <!-- TEXTO PRINCIPAL -->
+  <section class="texto" aria-label="Mensagem para Dayane">
+    <div class="main-text">
+      <p class="main-text">
+        Amor, desde o primeiro dia que nos cruzamos senti algo tranquilo e certo.  
+        Você entrou na minha vida com sorriso, fé e um jeito que aquece tudo ao redor.  
+        Hoje quero dizer obrigado por cada presença, cada abraço e cada momento simples que virou lembrança.  
+        Que nossa história siga crescendo com carinho, respeito e muitos sonhos juntos. 💙
+      </p>
+    </div>
+  </section>
+
+  <!-- GALERIA COM 3 FOTOS -->
+  <section class="galeria" aria-label="Galeria de fotos do casal">
+    <div class="foto"><img src="dg2.png" alt="Nós dois - foto 1"></div>
+    <div class="foto"><img src="dg3.png" alt="Nós dois - foto 2"></div>
+    <div class="foto"><img src="dg.png"  alt="Nós dois - foto 3"></div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    Feito com amor 💙 — Gabriel
+  </footer>
+
+  <!-- JavaScript para controle de audio simples -->
+  <script>
+    const audio = document.getElementById('bgAudio');
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+
+    // tentativa de autoplay: alguns navegadores bloqueiam autoplay com som - tocamos apenas quando usuário clica
+    function showPlayingState(playing){
+      if(playing){ playBtn.style.display='none'; pauseBtn.style.display='inline' }
+      else { playBtn.style.display='inline'; pauseBtn.style.display='none' }
+    }
+
+    playBtn.addEventListener('click', () => {
+      audio.play().then(()=> showPlayingState(true)).catch(()=> showPlayingState(false));
+    });
+
+    pauseBtn.addEventListener('click', () => {
+      audio.pause();
+      showPlayingState(false);
+    });
+
+    // se o navegador permitir autoplay sem interação, tenta iniciar em volume baixo
+    try {
+      audio.volume = 0.14; // volume bem suave
+      audio.play().then(()=> showPlayingState(true)).catch(()=> {});
+    } catch(e){ /* ignore */ }
+  </script>
+</body>
+</html>
